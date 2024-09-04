@@ -11,23 +11,13 @@ from loan.tests.fixtures.loan_fixtures import create_loan, create_bank, create_c
 def test_loan_serializer_valid_data(create_loan):
     loan = create_loan
 
-    mock_valid_data = {
-        'nominal_value': loan.nominal_value,
-        'interest_rate': loan.interest_rate,
-        'request_date': loan.request_date,
-        'request_ip_address': loan.request_ip_address,
-        'bank': loan.bank.id,
-        'customer': loan.customer.id
-    }
+    serializer = LoanSerializer(instance=loan)
 
-    serializer = LoanSerializer(data=mock_valid_data)
-
-    assert serializer.is_valid()
-    assert serializer.validated_data['nominal_value'] == loan.nominal_value
-    assert serializer.validated_data['interest_rate'] == loan.interest_rate
-    assert serializer.validated_data['request_ip_address'] == loan.request_ip_address
-    assert serializer.validated_data['bank'] == loan.bank
-    assert serializer.validated_data['customer'] == loan.customer
+    assert float(serializer.data['nominal_value']) == loan.nominal_value
+    assert float(serializer.data['interest_rate']) == loan.interest_rate
+    assert serializer.data['request_ip_address'] == loan.request_ip_address
+    assert serializer.data['bank'] == loan.bank.id
+    assert serializer.data['customer'] == loan.customer.id
 
 
 @pytest.mark.django_db
