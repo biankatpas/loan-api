@@ -1,22 +1,22 @@
 import uuid
+
 import pytest
 
 from loan.models import Loan
-from loan.tests.fixtures.loan_fixtures import create_loan, create_bank, create_customer
+from loan.tests.fixtures.loan_fixtures import (create_bank, create_customer,
+                                               create_loan)
 
 
 @pytest.mark.django_db
 def test_loan_creation(create_loan):
-    expected_bank = {
-        "name": "Banco do Brasil", "code": "001"
-    }
+    expected_bank = {"name": "Banco do Brasil", "code": "001"}
     expected_customer = {
         "name": "Customer Name",
     }
     expected_loan = {
         "nominal_value": 10000.00,
         "interest_rate": 5.00,
-        "request_ip_address": "192.168.1.1"
+        "request_ip_address": "192.168.1.1",
     }
 
     loan = create_loan
@@ -35,4 +35,7 @@ def test_loan_creation(create_loan):
 def test_loan_str(create_loan):
     loan = create_loan
 
-    assert str(loan) == f"Loan {loan.id} - Value: {loan.nominal_value}, Interest Rate: {loan.interest_rate}"
+    assert (
+        str(loan)
+        == f"Loan {loan.id} - Value: {loan.nominal_value}, Interest Rate: {loan.interest_rate}"
+    )

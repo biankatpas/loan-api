@@ -1,5 +1,4 @@
 import pytest
-
 from django.utils import timezone
 
 from loan.models import Loan
@@ -15,5 +14,5 @@ def create_loan(create_bank, create_customer):
         request_date=timezone.now().date(),
         request_ip_address="192.168.1.1",
         bank=create_bank,
-        customer=create_customer
+        customer=create_customer,
     )

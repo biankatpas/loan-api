@@ -1,5 +1,4 @@
 import pytest
-
 from rest_framework.exceptions import ValidationError
 
 from loan.serializers import CustomerSerializer
@@ -12,17 +11,17 @@ def test_customer_serializer_valid_data(create_customer):
 
     serializer = CustomerSerializer(instance=customer)
 
-    assert serializer.data['name'] == customer.name
-    assert serializer.data['id'] == str(customer.id)
+    assert serializer.data["name"] == customer.name
+    assert serializer.data["id"] == str(customer.id)
 
 
 @pytest.mark.django_db
 def test_customer_serializer_invalid_data():
     mock_invalid_data = {
-        'name': '',
+        "name": "",
     }
 
     serializer = CustomerSerializer(data=mock_invalid_data)
 
     assert not serializer.is_valid()
-    assert 'name' in serializer.errors
+    assert "name" in serializer.errors

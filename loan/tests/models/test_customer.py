@@ -1,4 +1,5 @@
 import uuid
+
 import pytest
 
 from loan.models import Customer
