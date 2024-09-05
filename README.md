@@ -102,10 +102,7 @@ Navigate to the root directory of the project and run the following command:
 docker-compose up
 ```
 ```bash
-docker-compose exec web /bin/bash
-```
-```bash
-pytest --cov
+docker-compose exec web pytest --cov=loan
 ```
 
 ## Running Linter Verification
