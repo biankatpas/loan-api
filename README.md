@@ -88,14 +88,44 @@ Note: If the `.env` file is not correctly configured or the Docker container is 
 Navigate to the root directory of the project and run the following command:
 
 ```bash
-docker-compose up --build
+docker-compose up
 ```
 ```bash
-docker-compose exec -it web /bin/bash
+docker-compose exec web pytest
+```
+
+## Running Coverage Verification
+
+Navigate to the root directory of the project and run the following command:
+
+```bash
+docker-compose up
 ```
 ```bash
-pytest
+docker-compose exec web /bin/bash
 ```
 ```bash
 pytest --cov
+```
+
+## Running Linter Verification
+
+Navigate to the root directory of the project and run the following command:
+
+```bash
+docker-compose up
+```
+```bash
+docker-compose exec web pylint loan
+```
+
+## Running Code Formatter
+
+Navigate to the root directory of the project and run the following command:
+
+```bash
+docker-compose up
+```
+```bash
+docker-compose exec web python formatter.py 
 ```
