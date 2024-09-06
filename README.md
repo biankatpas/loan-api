@@ -83,6 +83,17 @@ Open Postman and use the following endpoints:
 
 Note: If the `.env` file is not correctly configured or the Docker container is not running, the endpoints will not be accessible.
 
+## Populate DB with Faker Data
+
+Navigate to the root directory of the project and run the following command:
+
+```bash
+docker-compose up
+```
+```bash
+docker-compose exec web python populate_db.py
+```
+
 ## Running Tests
 
 Navigate to the root directory of the project and run the following command:
