@@ -1,16 +1,19 @@
 import uuid
 
 import pytest
+from faker import Faker
 
 from loan.models import Bank
 from loan.tests.fixtures.bank_fixtures import create_bank
+
+fake = Faker()
 
 
 @pytest.mark.django_db
 def test_bank_creation(create_bank):
     bank = create_bank
 
-    expected_result = {"name": "Banco do Brasil", "code": "001"}
+    expected_result = {"name": bank.name, "code": bank.code}
 
     assert isinstance(bank, Bank)
     assert isinstance(bank.id, uuid.UUID)
@@ -21,10 +24,15 @@ def test_bank_creation(create_bank):
 @pytest.mark.django_db
 def test_bank_str(create_bank):
     bank = create_bank
-    assert str(bank) == "Banco do Brasil"
+
+    expected_result = bank.name
+
+    assert str(bank) == expected_result
 
 
 @pytest.mark.django_db
 def test_bank_code_is_unique(create_bank):
+    bank = create_bank
+
     with pytest.raises(Exception):
-        Bank.objects.create(name="Other Bank Name", code="001")
+        Bank.objects.create(name=fake.company(), code=bank.code)

@@ -1,8 +1,11 @@
 import pytest
+from faker import Faker
 
 from loan.models import Bank
+
+fake = Faker()
 
 
 @pytest.fixture
 def create_bank():
-    return Bank.objects.create(name="Banco do Brasil", code="001")
+    return Bank.objects.create(name=fake.company(), code=fake.bothify(text="###"))

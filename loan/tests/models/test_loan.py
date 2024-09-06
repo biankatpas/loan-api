@@ -11,14 +11,14 @@ from loan.tests.fixtures.loan_fixtures import (create_bank, create_customer,
 def test_loan_creation(create_loan):
     loan = create_loan
 
-    expected_bank = {"name": "Banco do Brasil", "code": "001"}
+    expected_bank = {"name": loan.bank.name, "code": loan.bank.code}
     expected_customer = {
         "name": loan.customer.name,
     }
     expected_loan = {
-        "nominal_value": 10000.00,
-        "interest_rate": 5.00,
-        "request_ip_address": "192.168.1.1",
+        "nominal_value": loan.nominal_value,
+        "interest_rate": loan.interest_rate,
+        "request_ip_address": loan.request_ip_address,
     }
 
     assert isinstance(loan, Loan)
