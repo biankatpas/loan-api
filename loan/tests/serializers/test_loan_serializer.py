@@ -13,8 +13,8 @@ def test_loan_serializer_valid_data(create_loan):
 
     serializer = LoanSerializer(instance=loan)
 
-    assert float(serializer.data["nominal_value"]) == loan.nominal_value
-    assert float(serializer.data["interest_rate"]) == loan.interest_rate
+    assert serializer.data["nominal_value"] == str(loan.nominal_value)
+    assert serializer.data["interest_rate"] == str(loan.interest_rate)
     assert serializer.data["request_ip_address"] == loan.request_ip_address
     assert serializer.data["bank"] == loan.bank.id
     assert serializer.data["customer"] == loan.customer.id
