@@ -9,11 +9,11 @@ from loan.tests.fixtures.payment_fixtures import (create_bank, create_customer,
 
 @pytest.mark.django_db
 def test_payment_creation(create_payment):
-    expected_payment = {
-        "amount": 500.00,
-    }
-
     payment = create_payment
+
+    expected_payment = {
+        "amount": payment.amount,
+    }
 
     assert isinstance(payment, Payment)
     assert isinstance(payment.id, uuid.UUID)

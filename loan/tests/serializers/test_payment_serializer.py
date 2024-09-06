@@ -13,7 +13,7 @@ def test_payment_serializer_valid_data(create_payment):
 
     serializer = PaymentSerializer(instance=payment)
 
-    assert float(serializer.data["amount"]) == payment.amount
+    assert serializer.data["amount"] == str(payment.amount)
     assert serializer.data["payment_date"] == str(payment.payment_date)
     assert serializer.data["loan"] == payment.loan.id
 
