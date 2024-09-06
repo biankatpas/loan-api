@@ -2,7 +2,7 @@
 
 This API provides endpoints for ...
 
-## Available Endpoints
+## Available Endpoints (WIP)
 
 ### 1. POST /../..
 
@@ -73,7 +73,7 @@ To run the Loan API project using Docker, follow these steps:
    ```bash
    docker-compose up --build
    ```
-### 5. Use Postman to Test Endpoints
+### 5. Use Postman to Test Endpoints (WIP)
 
 Open Postman and use the following endpoints:
 
