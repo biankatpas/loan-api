@@ -1,5 +1,6 @@
 import pytest
 from django.contrib.auth.models import User
+from rest_framework import status
 from rest_framework.test import APIClient
 from rest_framework_simplejwt.tokens import RefreshToken
 
@@ -22,7 +23,7 @@ def test_token_obtain_pair():
         format="json",
     )
 
-    assert response.status_code == 200
+    assert response.status_code == status.HTTP_200_OK
     assert "access" in response.data
     assert "refresh" in response.data
 
@@ -42,7 +43,7 @@ def test_token_does_not_obtain_pair():
         format="json",
     )
 
-    assert response.status_code == 401
+    assert response.status_code == status.HTTP_401_UNAUTHORIZED
 
 
 @pytest.mark.django_db
@@ -59,14 +60,8 @@ def test_token_refresh():
         "/api/token/refresh/", {"refresh": str(refresh)}, format="json"
     )
 
-    assert response.status_code == 200
+    assert response.status_code == status.HTTP_200_OK
     assert "access" in response.data
-
-    response = client.post(
-        "/api/token/refresh/", {"refresh": "invalidtoken"}, format="json"
-    )
-
-    assert response.status_code == 401
 
 
 @pytest.mark.django_db
@@ -77,4 +72,4 @@ def test_token_does_not_refresh():
         "/api/token/refresh/", {"refresh": "invalidtoken"}, format="json"
     )
 
-    assert response.status_code == 401
+    assert response.status_code == status.HTTP_401_UNAUTHORIZED
