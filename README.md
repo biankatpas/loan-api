@@ -4,40 +4,39 @@ This API provides endpoints for managing loans, including loan creation, viewing
 
 ## Available Endpoints (WIP)
 
-### 1. POST /../..
+### 1. POST /api/banks/
 
-**Purpose:** ..
-
-**Request Body:**
-- **None:** ..
-
-### 2. **POST /..**
-
-**Purpose:** ..
-
-**Description:**
-
-* ...
+**Purpose:** Create a new bank entry.
 
 **Request Body:**
 
 ```json
 {
-  "..": ".."  
+  "name": "My Bank",
+  "code": "123456"  
 }
 ```
 
-### 3. GET /../../{..}
+### 2. GET /api/banks/{uuid}/
 
-**Purpose:** ..
+**Purpose:** Retrieve details of a specific bank.
 
 **Description:**
 
-* ...
+* Retrieves details of a bank identified by its UUID.
+* Returns a 404 error if the UUID is missing, invalid, or does not exist.
 
 **Request Parameter:**
 
-- `..` (path parameter): ...
+- `uuid` (path parameter): A unique identifier for the bank.
+
+### 3. GET /api/banks/
+
+**Purpose:** List all banks.
+
+**Description:**
+
+* Retrieves a list of all banks in the database.
   
 ## Running the Project
 
@@ -71,15 +70,11 @@ To run the Loan API project using Docker, follow these steps:
    Navigate to the root directory of the project and run the following command:
 
    ```bash
-   docker-compose up --build
+   docker-compose up
    ```
-### 5. Use Postman to Test Endpoints (WIP)
+### 5. Use Postman to Test Endpoints
 
-Open Postman and use the following endpoints:
-
-* POST /.../...: ...
-* POST /...: ...
-* GET /.../...: ...
+Open Postman and use the available endpoints.
 
 Note: If the `.env` file is not correctly configured or the Docker container is not running, the endpoints will not be accessible.
 
