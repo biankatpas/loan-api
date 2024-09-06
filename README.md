@@ -83,6 +83,44 @@ Open Postman and use the following endpoints:
 
 Note: If the `.env` file is not correctly configured or the Docker container is not running, the endpoints will not be accessible.
 
+## Create Django Superuser
+
+To create a superuser in Django (administrator), follow these steps:
+
+### 1. Navigate to the root directory of the project and run the following command:
+
+```bash
+docker-compose up
+```
+
+### 2. Once the containers are running, create a superuser by running the following command:
+```bash
+docker-compose run web python manage.py createsuperuser
+```
+### 3. Follow the Prompts:
+
+The command will prompt you to enter some details:
+
+* Username: The username for the admin.
+* Email address: The email address for the user.
+* Password: Set a strong password for the admin account.
+
+### 4. Access the Admin Panel:
+
+After creating the superuser, you can access the Django admin panel in your browser:
+
+```bash
+http://localhost:8000/admin
+```
+
+### 5. Additional Notes:
+
+Ensure Migrations Are Applied: before creating the superuser, make sure the database migrations have been applied. If not, you can run the migrations with this command:
+
+```bash
+docker-compose run web python manage.py migrate
+```
+
 ## Populate DB with Faker Data
 
 Navigate to the root directory of the project and run the following command:
