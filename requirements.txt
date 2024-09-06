@@ -8,3 +8,4 @@ pylint>=2.0,<3.0
 black
 isort
 pytest-cov
+faker

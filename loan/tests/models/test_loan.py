@@ -9,17 +9,17 @@ from loan.tests.fixtures.loan_fixtures import (create_bank, create_customer,
 
 @pytest.mark.django_db
 def test_loan_creation(create_loan):
+    loan = create_loan
+
     expected_bank = {"name": "Banco do Brasil", "code": "001"}
     expected_customer = {
-        "name": "Customer Name",
+        "name": loan.customer.name,
     }
     expected_loan = {
         "nominal_value": 10000.00,
         "interest_rate": 5.00,
         "request_ip_address": "192.168.1.1",
     }
-
-    loan = create_loan
 
     assert isinstance(loan, Loan)
     assert isinstance(loan.id, uuid.UUID)

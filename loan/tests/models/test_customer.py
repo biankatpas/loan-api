@@ -11,7 +11,7 @@ def test_customer_creation(create_customer):
     customer = create_customer
 
     expected_result = {
-        "name": "Customer Name",
+        "name": customer.name,
     }
 
     assert isinstance(customer, Customer)
@@ -22,4 +22,7 @@ def test_customer_creation(create_customer):
 @pytest.mark.django_db
 def test_customer_str(create_customer):
     customer = create_customer
-    assert str(customer) == "Customer Name"
+
+    expected_result = customer.name
+
+    assert str(customer) == expected_result
