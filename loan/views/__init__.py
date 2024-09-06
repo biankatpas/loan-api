@@ -1,1 +1,3 @@
-from .bank_views import BankDetailView, BankListCreateView
+from .bank_views import BankListCreateView, BankRetrieveUpdateDestroyAPIView
+from .customer_views import (CustomerListCreateView,
+                             CustomerRetrieveUpdateDestroyAPIView)
