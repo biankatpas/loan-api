@@ -2,7 +2,8 @@ from django.urls import path
 
 from loan.views import (BankListCreateView, BankRetrieveUpdateDestroyAPIView,
                         CustomerListCreateView,
-                        CustomerRetrieveUpdateDestroyAPIView)
+                        CustomerRetrieveUpdateDestroyAPIView,
+                        LoanListCreateView, LoanRetrieveUpdateDestroyAPIView)
 
 urlpatterns = [
     path("banks/", BankListCreateView.as_view(), name="bank-list-create"),
@@ -16,5 +17,11 @@ urlpatterns = [
         "customers/<uuid:pk>/",
         CustomerRetrieveUpdateDestroyAPIView.as_view(),
         name="customer-detail",
+    ),
+    path("loans/", LoanListCreateView.as_view(), name="loan-list-create"),
+    path(
+        "loans/<uuid:pk>/",
+        LoanRetrieveUpdateDestroyAPIView.as_view(),
+        name="loan-detail",
     ),
 ]
