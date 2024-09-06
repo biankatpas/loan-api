@@ -37,7 +37,40 @@ This API provides endpoints for managing loans, including loan creation, viewing
 **Description:**
 
 * Retrieves a list of all banks in the database.
-  
+
+### 4. POST /api/customers/
+
+**Purpose:** Create a new customer entry.
+
+**Request Body:**
+
+```json
+{
+  "name": "Customer Name",
+}
+```
+
+### 5. GET /api/customers/{uuid}/
+
+**Purpose:** Retrieve details of a specific customer.
+
+**Description:**
+
+* Retrieves details of a customer identified by its UUID.
+* Returns a 404 error if the UUID is missing, invalid, or does not exist.
+
+**Request Parameter:**
+
+- `uuid` (path parameter): A unique identifier for the customer.
+
+### 6. GET /api/customers/
+
+**Purpose:** List all customers.
+
+**Description:**
+
+* Retrieves a list of all customers in the database.  
+
 ## Running the Project
 
 Follow these steps to run the Loan API using Docker:
