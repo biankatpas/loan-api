@@ -17,18 +17,17 @@ from loan.models import Bank, Customer, Loan, Payment
 
 fake = Faker()
 
-
-print("Populate the database with fake data...")
+print("Populating the database with fake data...")
 
 # Create Users
 for _ in range(10):
     user = User.objects.create_user(username=fake.user_name(), password=fake.password())
 
-    # Create Customers
-    customer = Customer.objects.create(name=fake.name())
+    # Create Customers and link them to the User
+    customer = Customer.objects.create(name=fake.name(), user=user)
 
     # Create Banks
-    bank = Bank.objects.create(name=fake.company(), code=fake.bban())
+    bank = Bank.objects.create(name=fake.company(), code=fake.bban()[:10])
 
     # Create Loans
     for _ in range(fake.random_int(min=0, max=3)):
