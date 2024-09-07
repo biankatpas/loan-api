@@ -3,7 +3,7 @@ import uuid
 import pytest
 
 from loan.models import Customer
-from loan.tests.fixtures.customer_fixtures import create_customer
+from loan.tests.fixtures.customer_fixtures import create_customer, create_user
 
 
 @pytest.mark.django_db

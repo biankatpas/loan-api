@@ -6,4 +6,8 @@ from loan.models import Customer
 class CustomerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Customer
-        fields = "__all__"
+        fields = ["id", "name"]
+        read_only_fields = ["id", "user"]
+
+    def create(self, validated_data):
+        return Customer.objects.create(**validated_data)

@@ -4,7 +4,7 @@ from rest_framework.exceptions import ValidationError
 
 from loan.serializers import LoanSerializer
 from loan.tests.fixtures.loan_fixtures import (create_bank, create_customer,
-                                               create_loan)
+                                               create_loan, create_user)
 
 
 @pytest.mark.django_db

@@ -4,7 +4,7 @@ import pytest
 
 from loan.models import Loan
 from loan.tests.fixtures.loan_fixtures import (create_bank, create_customer,
-                                               create_loan)
+                                               create_loan, create_user)
 
 
 @pytest.mark.django_db
