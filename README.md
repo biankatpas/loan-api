@@ -143,7 +143,7 @@ http://localhost:8000/admin
 
 ### 5. Additional Notes:
 
-Ensure Migrations Are Applied: before creating the superuser, make sure the database migrations have been applied. If not, you can run the migrations with this command:
+* Ensure Migrations Are Applied: before creating the superuser, make sure the database migrations have been applied. If not, you can run the migrations with this command:
 
 ```bash
 docker-compose run web python manage.py migrate
