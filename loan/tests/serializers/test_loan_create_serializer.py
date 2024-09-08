@@ -59,6 +59,24 @@ def test_loan_create_serializer_valid_data(
 
 
 @pytest.mark.django_db
+def test_loan_create_serializer_representation(
+    create_customer, create_bank, create_loan
+):
+    loan = create_loan
+
+    serializer = LoanCreateSerializer(instance=loan)
+
+    serialized_data = serializer.data
+
+    assert serialized_data["customer"] == CustomerSerializer(loan.customer).data
+    assert serialized_data["bank"] == BankSerializer(loan.bank).data
+    assert serialized_data["nominal_value"] == str(loan.nominal_value)
+    assert serialized_data["interest_rate"] == str(loan.interest_rate)
+    assert serialized_data["request_date"] == str(loan.request_date)
+    assert serialized_data["request_ip_address"] == loan.request_ip_address
+
+
+@pytest.mark.django_db
 def test_loan_create_serializer_customer_validation(create_bank):
     bank = create_bank
 
