@@ -3,13 +3,9 @@ from unittest.mock import MagicMock
 
 import pytest
 from faker import Faker
-from rest_framework import status
-from rest_framework.exceptions import ValidationError
 
-from loan.models import Bank, Customer, Loan
 from loan.serializers import (BankSerializer, CustomerSerializer,
                               LoanCreateSerializer)
-from loan.tests.fixtures.authentication_fixtures import client
 from loan.tests.fixtures.loan_fixtures import (create_bank, create_customer,
                                                create_loan, create_user)
 
@@ -59,9 +55,7 @@ def test_loan_create_serializer_valid_data(
 
 
 @pytest.mark.django_db
-def test_loan_create_serializer_representation(
-    create_customer, create_bank, create_loan
-):
+def test_loan_create_serializer_representation(create_loan):
     loan = create_loan
 
     serializer = LoanCreateSerializer(instance=loan)
