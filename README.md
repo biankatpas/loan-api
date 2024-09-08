@@ -12,9 +12,12 @@ This REST API was developed using [Django](https://www.djangoproject.com/) and [
 
 ## Upcoming Features
 
-* The API calculates and displays the outstanding balance of each loan:
+- **Outstanding Balance Calculation**:
+    * The API calculates and displays the outstanding balance of each loan.
     * The outstanding balance represents the remaining amount owed to the bank.
     * It accounts for the loan's interest rate and deducts the total amount already paid.
+- **Additional View Tests**:
+    * More tests need to be developed to cover all views and ensure the system functions correctly across all use cases.
 
 ## Authentication Endpoints
 
