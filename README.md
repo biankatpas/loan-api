@@ -1,4 +1,4 @@
-# Loan API
+# Loan Management API
 
 This API provides endpoints for managing loans, including loan creation, viewing loan details, making payments, and retrieving payment information.
 
