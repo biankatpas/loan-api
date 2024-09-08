@@ -1,9 +1,6 @@
 import pytest
-from django.contrib.auth.models import User
 from rest_framework import status
-from rest_framework.test import APIClient
 
-from loan.models import Bank, Customer, Loan
 from loan.tests.fixtures.authentication_fixtures import client
 from loan.tests.fixtures.loan_fixtures import (create_bank, create_customer,
                                                create_loan, create_user)
