@@ -22,6 +22,7 @@ def test_customer_list_view_authenticated(create_customer, client):
 @pytest.mark.django_db
 def test_customer_list_view_unauthenticated(client, create_customer):
     api_client = client
+
     response = api_client.get("/api/customers/")
 
     assert response.status_code == status.HTTP_401_UNAUTHORIZED
@@ -43,5 +44,6 @@ def test_customer_create_view(client, create_user):
     assert response.status_code == status.HTTP_201_CREATED
     assert Customer.objects.count() == 1
     assert Customer.objects.get().user == user
+
 
 # TODO: test CustomerRetrieveUpdateDestroyAPIView
