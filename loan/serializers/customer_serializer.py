@@ -8,6 +8,3 @@ class CustomerSerializer(serializers.ModelSerializer):
         model = Customer
         fields = ["id", "name"]
         read_only_fields = ["id", "user"]
-
-    def create(self, validated_data):
-        return Customer.objects.create(**validated_data)

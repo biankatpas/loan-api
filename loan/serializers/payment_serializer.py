@@ -25,9 +25,6 @@ class PaymentSerializer(serializers.ModelSerializer):
 
         return loan
 
-    def create(self, validated_data):
-        return Payment.objects.create(**validated_data)
-
     def to_representation(self, instance):
         representation = super().to_representation(instance)
         representation["loan"] = LoanDetailSerializer(instance.loan).data

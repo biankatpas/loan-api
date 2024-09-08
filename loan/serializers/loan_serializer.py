@@ -12,20 +12,18 @@ class LoanCreateSerializer(serializers.ModelSerializer):
         model = Loan
         fields = "__all__"
 
-    def create(self, validated_data):
-        customer_uuid = validated_data.pop("customer")
+    def validate_customer(self, value):
         try:
-            customer = Customer.objects.get(id=customer_uuid)
+            customer = Customer.objects.get(id=value)
         except Customer.DoesNotExist:
             raise serializers.ValidationError("Customer does not exist.")
 
-        if customer.user != self.context["request"].user:
+        request_user = self.context["request"].user
+        if customer.user != request_user:
             raise serializers.ValidationError(
                 "You do not have permission to access this loan because customer does not belong to the current user."
             )
-
-        loan = Loan.objects.create(customer=customer, **validated_data)
-        return loan
+        return customer
 
     def to_representation(self, instance):
         representation = super().to_representation(instance)
@@ -43,13 +41,12 @@ class LoanDetailSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
     def validate_customer(self, value):
-        customer_uuid = value
-        request_user = self.context["request"].user
-
         try:
-            customer = Customer.objects.get(id=customer_uuid)
+            customer = Customer.objects.get(id=value)
         except Customer.DoesNotExist:
             raise serializers.ValidationError("Customer does not exist.")
+
+        request_user = self.context["request"].user
         if customer.user != request_user:
             raise serializers.ValidationError(
                 "You do not have permission to access this loan because customer does not belong to the current user."
