@@ -6,13 +6,16 @@ This REST API was developed using [Django](https://www.djangoproject.com/) and [
 
 * Users can create loans and register their payments.
 * Users can view their loans and associated payments.
-* The API calculates and displays the outstanding balance of each loan:
-    * The outstanding balance represents the remaining amount owed to the bank.
-    * It accounts for the loan's interest rate and deducts the total amount already paid.
 * Data privacy is enforced—users can only access and manage loans and payments associated with their own customers.
 * Token-based authentication is used to secure access to the API.
 * Core features are tested to ensure functionality and reliability.
-  
+
+## Upcoming Features
+
+* The API calculates and displays the outstanding balance of each loan:
+    * The outstanding balance represents the remaining amount owed to the bank.
+    * It accounts for the loan's interest rate and deducts the total amount already paid.
+
 ## Available Endpoints (WIP)
 
 ### 1. POST /api/banks/
