@@ -2,7 +2,7 @@ import pytest
 from rest_framework import status
 from rest_framework.exceptions import ValidationError
 
-from loan.serializers import LoanDetailSerializer, LoanCreateSerializer
+from loan.serializers import LoanCreateSerializer, LoanDetailSerializer
 from loan.tests.fixtures.loan_fixtures import (create_bank, create_customer,
                                                create_loan, create_user)
 
