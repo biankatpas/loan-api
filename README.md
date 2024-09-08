@@ -16,6 +16,45 @@ This REST API was developed using [Django](https://www.djangoproject.com/) and [
     * The outstanding balance represents the remaining amount owed to the bank.
     * It accounts for the loan's interest rate and deducts the total amount already paid.
 
+## Authentication Endpoints
+
+These endpoints are used to obtain and refresh authentication tokens, required for accessing the API.
+
+- **POST** `/api/token/`:  
+  Generate a new access and refresh token pair by providing valid user credentials.
+
+  **Request Body:**
+  ```json
+  {
+    "username": "your_username",
+    "password": "your_password"
+  }
+  ```
+  
+  **Response:**
+  ```json
+  {
+    "access": "access_token",
+    "refresh": "refresh_token"
+  }
+  ```
+- **POST** `/api/token/refresh`:  
+  Refresh the access token using a valid refresh token.
+
+  **Request Body:**
+  ```json
+  {
+    "refresh": "refresh_token"
+  }
+  ```
+  
+  **Response:**
+  ```json
+  {
+     "access": "new_access_token"
+  }
+  ```
+  
 ## Available Endpoints (WIP)
 
 ### 1. POST /api/banks/
