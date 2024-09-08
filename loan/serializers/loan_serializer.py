@@ -21,7 +21,7 @@ class LoanCreateSerializer(serializers.ModelSerializer):
 
         if customer.user != self.context["request"].user:
             raise serializers.ValidationError(
-                "Customer does not belong to the current user."
+                "You do not have permission to access this loan because customer does not belong to the current user."
             )
 
         loan = Loan.objects.create(customer=customer, **validated_data)
@@ -52,6 +52,6 @@ class LoanDetailSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("Customer does not exist.")
         if customer.user != request_user:
             raise serializers.ValidationError(
-                "Customer does not belong to the current user."
+                "You do not have permission to access this loan because customer does not belong to the current user."
             )
         return customer

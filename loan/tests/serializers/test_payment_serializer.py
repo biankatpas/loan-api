@@ -16,7 +16,7 @@ def test_payment_serializer_valid_data(create_payment):
 
     assert serializer.data["amount"] == str(payment.amount)
     assert serializer.data["payment_date"] == str(payment.payment_date)
-    assert serializer.data["loan"] == payment.loan.id
+    assert serializer.data["loan"]["id"] == str(payment.loan.id)
 
 
 @pytest.mark.django_db
