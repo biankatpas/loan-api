@@ -31,13 +31,6 @@ These endpoints are used to obtain and refresh authentication tokens, required f
   }
   ```
   
-  **Response:**
-  ```json
-  {
-    "access": "access_token",
-    "refresh": "refresh_token"
-  }
-  ```
 - **POST** `/api/token/refresh`:  
   Refresh the access token using a valid refresh token.
 
@@ -48,81 +41,134 @@ These endpoints are used to obtain and refresh authentication tokens, required f
   }
   ```
   
-  **Response:**
+## Available Endpoints
+
+These are the main endpoints available for managing loans and payments in the system. Ensure that you are authenticated with a valid token to access them.
+
+### Bank Endpoints
+
+- **POST** `/api/banks/`:  
+
+  Create a new bank.
+
+   **Request Body:**
+   
+   ```json
+   {
+     "name": "My Bank",
+     "code": "123456"  
+   }
+   ```
+
+- **GET**  `/api/banks/`:
+
+  Retrieve a list of all banks.
+  
+- **GET** `/api/banks/{id}/`:
+
+  Retrieve details of a specific bank.
+
+- **PUT** `/api/banks/{id}/`:  
+
+  Update details of an existing bank. 
+
+- **DELETE** `/api/banks/{id}/`:  
+
+  Delete an existing bank.
+
+### Customer Endpoints
+
+- **POST** `/api/customers/`:  
+
+  Create a new customer associated with the authenticated user.
+
+   **Request Body:**
+   
+   ```json
+   {
+     "name": "Customer Name",
+   }
+   ```
+
+- **GET**  `/api/customers/`:
+
+  Retrieve a list of all customers associated with the authenticated user.
+  
+- **GET** `/api/customers/{id}/`:
+
+  Retrieve details of a specific customer associated with the authenticated user.
+
+- **PUT** `/api/customers/{id}/`:
+
+  Update details of an existing customer associated with the authenticated user.
+
+- **DELETE** `/api/customers/{id}/`:
+
+  Delete an existing customer associated with the authenticated user.
+
+### Loan Endpoints
+
+- **POST** `/api/loans/`:  
+
+  Create a new loan for a customer associated with the authenticated user.
+
+  **Request Body:**
   ```json
   {
-     "access": "new_access_token"
+    "customer": "uuid_of_customer",
+    "amount": "10000.00",
+    "interest_rate": "5.00",
+    "bank": "Bank name",
+    "request_date": "2024-09-08"
   }
   ```
+
+- **GET** `/api/loans/`:  
+
+  Retrieve a list of all loans associated with the authenticated user.
   
-## Available Endpoints (WIP)
+- **GET** `/api/loans/{id}/`:  
 
-### 1. POST /api/banks/
+  Retrieve details of a specific loan associated with the authenticated user. 
 
-**Purpose:** Create a new bank entry.
+- **PUT** `/api/loans/{id}/`:  
 
-**Request Body:**
+  Update details of an existing loan associated with the authenticated user. 
 
-```json
-{
-  "name": "My Bank",
-  "code": "123456"  
-}
-```
+- **DELETE** `/api/loans/{id}/`:  
 
-### 2. GET /api/banks/{uuid}/
+  Delete an existing loan associated with the authenticated user.
 
-**Purpose:** Retrieve details of a specific bank.
+### Payment Endpoints
 
-**Description:**
+- **POST** `/api/payments/`:  
 
-* Retrieves details of a bank identified by its UUID.
-* Returns a 404 error if the UUID is missing, invalid, or does not exist.
+  Create a new payment for a loan associated with the authenticated user.
 
-**Request Parameter:**
+  **Request Body:**
+  ```json
+  {
+      "loan": "uuid_of_loan",
+     "payment_date": "2024-09-08",
+     "amount": "150.00"
+  }
+  ```
 
-- `uuid` (path parameter): A unique identifier for the bank.
+- **GET** `/api/payments/`:  
 
-### 3. GET /api/banks/
+  Retrieve a list of all payments associated with the authenticated user.
+  
+- **GET** `/api/payments/{id}/`:  
 
-**Purpose:** List all banks.
+  Retrieve details of a payment associated with the authenticated user. 
 
-**Description:**
+- **PUT** `/api/payments/{id}/`:  
 
-* Retrieves a list of all banks in the database.
+  Update details of an existing payment associated with the authenticated user. 
 
-### 4. POST /api/customers/
+- **DELETE** `/api/payments/{id}/`:  
 
-**Purpose:** Create a new customer entry.
-
-**Request Body:**
-
-```json
-{
-  "name": "Customer Name",
-}
-```
-
-### 5. GET /api/customers/{uuid}/
-
-**Purpose:** Retrieve details of a specific customer.
-
-**Description:**
-
-* Retrieves details of a customer identified by its UUID.
-* Returns a 404 error if the UUID is missing, invalid, or does not exist.
-
-**Request Parameter:**
-
-- `uuid` (path parameter): A unique identifier for the customer.
-
-### 6. GET /api/customers/
-
-**Purpose:** List all customers.
-
-**Description:**
-
-* Retrieves a list of all customers in the database.  
+  Delete an existing payment associated with the authenticated user.   
 
 ## Running the Project
 
