@@ -313,3 +313,10 @@ docker-compose up
 ```bash
 docker-compose exec web python formatter.py 
 ```
+
+## Pending Tasks
+
+- Restore `request_ip_address` to be required. Currently set to allow null due to test issues after making the field auto-populated in the view and hidden from the serializer output.
+- Implement logic for calculating the outstanding loan balance.
+- After updating the Loan serializer to exclude `request_ip_address` and setting it as read-only via `extra_kwargs`, ensure that the Loan fixture and all associated tests are adjusted accordingly.
+- Implement tests to verify the correct handling of `request_ip_address` in the view, ensuring it's auto-populated and behaves as expected.
