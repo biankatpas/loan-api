@@ -35,7 +35,6 @@ def test_loan_create_serializer_valid_data(
         "nominal_value": fake_nominal_value,
         "interest_rate": fake_interest_rate,
         "request_date": fake_request_date,
-        "request_ip_address": fake_request_ip_address,
     }
 
     mock_request = MagicMock()
@@ -51,7 +50,6 @@ def test_loan_create_serializer_valid_data(
     assert loan.nominal_value == fake_nominal_value
     assert loan.interest_rate == fake_interest_rate
     assert loan.request_date == fake_request_date
-    assert loan.request_ip_address == fake_request_ip_address
 
 
 @pytest.mark.django_db
@@ -67,7 +65,6 @@ def test_loan_create_serializer_representation(create_loan):
     assert serialized_data["nominal_value"] == str(loan.nominal_value)
     assert serialized_data["interest_rate"] == str(loan.interest_rate)
     assert serialized_data["request_date"] == str(loan.request_date)
-    assert serialized_data["request_ip_address"] == loan.request_ip_address
 
 
 @pytest.mark.django_db

@@ -1,3 +1,9 @@
+# TODO: Review Loan Fixture and Related Tests
+#
+# After updating the Loan serializer to exclude 'request_ip_address' from the fields
+# and setting it as read-only using extra_kwargs, ensure that the Loan fixture and all
+# associated tests are updated accordingly.
+
 import pytest
 from faker import Faker
 

@@ -10,7 +10,15 @@ class LoanCreateSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Loan
-        fields = "__all__"
+        fields = [
+            "id",
+            "nominal_value",
+            "interest_rate",
+            "request_date",
+            "customer",
+            "bank",
+        ]
+        extra_kwargs = {"request_ip_address": {"read_only": True}}
 
     def validate_customer(self, value):
         try:

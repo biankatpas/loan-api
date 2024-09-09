@@ -19,6 +19,10 @@ class LoanListCreateView(generics.ListCreateAPIView):
         user = self.request.user
         return Loan.objects.filter(customer__user=user)
 
+    def perform_create(self, serializer):
+        remote_addr = self.request.META.get("REMOTE_ADDR")
+        serializer.save(request_ip_address=remote_addr)
+
 
 class LoanRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Loan.objects.all()
