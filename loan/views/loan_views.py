@@ -1,3 +1,6 @@
+# TODO: Implement tests to verify the correct handling of `request_ip_address` in the view,
+#       ensuring it's auto-populated and behaves as expected.
+
 from rest_framework import generics
 from rest_framework.permissions import IsAuthenticated
 

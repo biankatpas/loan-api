@@ -1,5 +1,6 @@
 # TODO: Restore `request_ip_address` to be required. Currently, it's set to allow null due to test issues
 #       after making the field auto-populated in the view and hidden in the serializer output.
+# TODO: Implement logic for calculating the outstanding balance of the loan.
 
 import uuid
 
