@@ -12,9 +12,12 @@ This REST API was developed using [Django](https://www.djangoproject.com/) and [
 
 ## Upcoming Features
 
-- **Outstanding Balance Calculation**:
-    * Implement API functionality to calculate and display the outstanding balance of each loan.
+- **Outstanding Balance Calculation**: Implement API functionality to calculate and display the outstanding balance of each loan.
     * The outstanding balance reflects the remaining amount owed to the bank, considering the loan's interest rate and total payments made.
+
+## Feature Enhancements
+
+- **Outstanding Balance Calculation**: If the API is used by a bank or financial institution processing a high volume of payments, simultaneous balance calculations become critical. Celery can handle these calculations in the background, preventing the main application from becoming overloaded.
 
 ## Tests Improvements
 
@@ -22,7 +25,7 @@ This REST API was developed using [Django](https://www.djangoproject.com/) and [
     * View Tests: Develop more comprehensive tests to cover all views and ensure correct functionality across various use cases.
     * Edge Case Testing: Evaluate how the application handles invalid or unexpected data to ensure resilience and effective management of unforeseen situations.
     * Performance Testing: Assess the application’s performance under load, including stress and load testing, to ensure it handles high volumes of requests efficiently.
-    * Security Testing: Verify the application’s protection against common vulnerabilities such as SQL injection to ensure robust security measures are in place. 
+    * Security Testing: Verify the application’s protection against common vulnerabilities such as SQL injection to ensure robust security measures are in place.
 
 ## Authentication Endpoints
 
